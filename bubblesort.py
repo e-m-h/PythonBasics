@@ -1,6 +1,6 @@
 # Bubble sort
 ulist = []
-g = int(input("Input a number ('0' ends collection and sorts): "))
+g = ""
 
 def bubbleSort(ulist):
     for aLength in range(len(ulist)):
@@ -10,11 +10,16 @@ def bubbleSort(ulist):
                 ulist[i] = ulist[i + 1]
                 ulist[i + 1] = temp
 
+print("'0' ends integer collection and sorts.")
 while True:
-    if g != 0:
-        g = int(input("Input a number: "))
-        ulist.append(g)
-    else:
-        bubbleSort(ulist)
-        print(ulist)
-        break
+    try:
+        if g != 0:
+            g = int(input("Input a number: "))
+            ulist.append(g)
+        elif g == 0:
+            ulist.remove(g)
+            bubbleSort(ulist)
+            print(ulist)
+            break
+    except ValueError:
+        print("Please input an integer.")
